@@ -52,7 +52,7 @@ The package will set up a generic web route that will catch anything apart from 
 
 To change the default options use
 ```
-$ php artisan vendor:publish --provider="berthott/NgLaravel/NgBuildServiceProvider" --tag="config"
+$ php artisan vendor:publish --provider="berthott\NgLaravel\NgBuildServiceProvider" --tag="config"
 ```
 By default default the package will look for Angulars output in `public/assets/angular`. If you choose to change the output path in `angular.json` please set the `output` property in `config/angular.php` or the `NG_OUTPUT_PATH` in `.env` accordingly.
 
@@ -60,7 +60,7 @@ To add a middleware to the web route use the `middleware` property in `angular.j
 
 To change the default view use
 ```
-$ php artisan vendor:publish --provider="berthott/NgLaravel/NgBuildServiceProvider" --tag="views"
+$ php artisan vendor:publish --provider="berthott\NgLaravel\NgBuildServiceProvider" --tag="views"
 ```
 
 ## Compatibility
