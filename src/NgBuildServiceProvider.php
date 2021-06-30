@@ -46,7 +46,7 @@ class NgBuildServiceProvider extends ServiceProvider
 
         // publish view
         $this->publishes([
-            __DIR__.'/../resources/views' => resource_path('views/vendor/nglaravel'),
+            __DIR__.'/../resources/views' => resource_path('views/vendor/angular'),
         ], 'views');
     }
     
