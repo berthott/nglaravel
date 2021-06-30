@@ -41,7 +41,7 @@ In `angular.json` do the following changes:
 In the `package.json` of the angular project do the following changes:
 ```
 "start": "ng build --configuration development --prod=false",
-"build": "ng build --prod",
+"build": "ng build",
 ```
 
 ## How it works
