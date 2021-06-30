@@ -31,7 +31,7 @@ In `angular.json` do the following changes:
         "statsJson": true,
         // ...
       },
-      "dev": {
+      "development": {
         "watch": true
       }
     }
@@ -40,7 +40,7 @@ In `angular.json` do the following changes:
 ```
 In the `package.json` of the angular project do the following changes:
 ```
-"start": "ng build --configuration dev --prod=false",
+"start": "ng build --configuration development --prod=false",
 "build": "ng build --prod",
 ```
 
