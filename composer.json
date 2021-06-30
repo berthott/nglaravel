@@ -1,0 +1,29 @@
+{
+  "name": "berthott/nglaravel",
+  "description": "Build your angular frontend as part of you laravel project.",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Jan Bladt",
+      "email": "berthott@web.de"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "berthott\\NgLaravel\\": "src",
+      "berthott\\NgLaravel\\Tests\\": "tests"
+    }
+  },
+  "extra": {
+    "laravel": {
+        "providers": [
+            "berthott\\NgLaravel\\NgBuildServiceProvider"
+        ]
+    }
+  },
+  "require-dev": {
+    "orchestra/testbench": "^6.0",
+    "phpunit/phpunit": "^9.5"
+  }
+}
