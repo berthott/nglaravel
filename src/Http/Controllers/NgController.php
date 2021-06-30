@@ -7,6 +7,6 @@ use berthott\NgLaravel\Services\NgBuildService;
 class NgController extends Controller
 {
     public function index(NgBuildService $ng) {
-        return view('angular::index', ['ngAssets' => $ng->assets]);
+        return view('angular::index', ['ngAssets' => $ng->assets()]);
     }
 }

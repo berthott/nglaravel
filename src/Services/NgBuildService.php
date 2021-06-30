@@ -9,7 +9,7 @@ class NgBuildService
 {
     // We'll cache our assets hash here, so we don't have to
     // constantly extract the values from stats.json
-    public $assets = array();
+    private $assets = [];
 
     public function __construct()
     {
@@ -25,7 +25,7 @@ class NgBuildService
     */
     private function extractAndCache()
     {
-        $path = public_path('assets/angular') . '/stats.json';
+        $path = config('angular.output') . '/stats.json';
 
         try {
             $json = json_decode(file_get_contents($path), true);
@@ -42,7 +42,17 @@ class NgBuildService
                 }
             }
         } catch (Exception $e) {
-          throw new NgBuildServiceException;
         }
+    }
+
+    /**
+    * Get the cached assets and throw an error when empty
+    */
+    public function assets()
+    {
+        if (empty($this->assets) && !file_exists(config('angular.output') . '/main.js')) {
+            throw new NgBuildServiceException;
+        }
+        return $this->assets;
     }
 }
