@@ -13,6 +13,8 @@
     {{-- This'll load our extracted and hashed CSS assets here --}}
     @if (isset($ngAssets) && count($ngAssets))
         <link rel="stylesheet" href="/{{ config('angular.output') }}/{{ $ngAssets['styles'] }}">
+    @else
+        <link rel="stylesheet" href="/{{ config('angular.output') }}/styles.css">
     @endif
   </head>
   <body>
@@ -29,7 +31,6 @@
     @else
         <script src="/{{ config('angular.output') }}/runtime.js" defer></script>
         <script src="/{{ config('angular.output') }}/polyfills.js" defer></script>
-        <script src="/{{ config('angular.output') }}/styles.js" defer></script>
         <script src="/{{ config('angular.output') }}/vendor.js" defer></script>
         <script src="/{{ config('angular.output') }}/main.js" defer></script>
     @endenv
