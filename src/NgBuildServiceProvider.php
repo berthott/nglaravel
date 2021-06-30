@@ -15,6 +15,7 @@ class NgBuildServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        // add config
         $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'angular');
     }
 
@@ -42,6 +43,11 @@ class NgBuildServiceProvider extends ServiceProvider
 
         // add view
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'angular');
+
+        // publish view
+        $this->publishes([
+            __DIR__.'/../resources/views' => resource_path('views/vendor/nglaravel'),
+        ], 'views');
     }
     
     protected function routeConfiguration()
