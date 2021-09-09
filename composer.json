@@ -1,6 +1,6 @@
 {
   "name": "berthott/nglaravel",
-  "description": "Build your angular frontend as part of you laravel project.",
+  "description": "Build your angular frontend as part of your laravel project.",
   "type": "library",
   "license": "MIT",
   "authors": [
