@@ -2,7 +2,7 @@
 
 namespace berthott\NgLaravel;
 
-use berthott\NgLaravel\Services\NgBuildService;
+use berthott\NgLaravel\Http\Controllers\NgController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
