@@ -46,7 +46,7 @@ In the `package.json` of the angular project do the following changes:
 
 ## How it works
 
-The package will set up a generic web route that will catch anything apart from /api URLs an forward it to a view including Angulars output scripts. In development these are the static files, in production a controller will read stats.json to include the correctly hashed files.
+The package will set up a generic web route that will catch anything apart from routes specified in the `except_routes` config, and forward it to a view including Angulars output scripts. In development these are the static files, in production a controller will read stats.json to include the correctly hashed files.
 
 ## Options
 
@@ -57,6 +57,7 @@ $ php artisan vendor:publish --provider="berthott\NgLaravel\NgBuildServiceProvid
 By default default the package will look for Angulars output in `public/assets/angular`. If you choose to change the output path in `angular.json` please set the `output` property in `config/angular.php` or the `NG_OUTPUT_PATH` in `.env` accordingly.
 
 To add a middleware to the web route use the `middleware` property in `angular.json`.
+To except routes from being forwarded to angular add them to the `except_routes` array. By default all /api prefixed routes will be excepted.
 
 To change the default view use
 ```

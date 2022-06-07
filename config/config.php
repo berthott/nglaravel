@@ -13,6 +13,17 @@ return [
 
     'output' => env('NG_OUTPUT_PATH', 'assets/angular'),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Excepted Routes
+    |--------------------------------------------------------------------------
+    |
+    | Determines the beginning of routes that should not be forwarded to angular.
+    |
+    */
+
+    'except_routes' => ['api'],
+
 
     /*
     |--------------------------------------------------------------------------

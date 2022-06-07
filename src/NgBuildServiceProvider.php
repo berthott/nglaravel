@@ -37,9 +37,7 @@ class NgBuildServiceProvider extends ServiceProvider
         ], 'config');
 
         // add route
-        Route::group($this->routeConfiguration(), function () {
-            $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
-        });
+        $this->setUpRoute();
 
         // add view
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'angular');
@@ -48,6 +46,21 @@ class NgBuildServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../resources/views' => resource_path('views/vendor/angular'),
         ], 'views');
+    }
+
+    protected function setUpRoute()
+    {
+        $exceptedRoutes = [];
+        foreach (config('angular.except_routes') as $route) {
+            array_push($exceptedRoutes, "(?!$route)");
+        }
+        $exceptedRoutes = join($exceptedRoutes);
+        
+        Route::group($this->routeConfiguration(), function () use ($exceptedRoutes) {
+            Route::any('/{any?}', [NgController::class, 'index'])
+                ->where('any', "^$exceptedRoutes.*$")
+                ->name('index');
+        });
     }
     
     protected function routeConfiguration()
