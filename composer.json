@@ -25,5 +25,8 @@
   "require-dev": {
     "orchestra/testbench": "^7.0",
     "phpunit/phpunit": "^9.5"
+  },
+  "require": {
+    "halaxa/json-machine": "^1.1"
   }
 }

@@ -3,6 +3,7 @@
 namespace berthott\NgLaravel\Services;
 
 use berthott\NgLaravel\Exceptions\NgBuildServiceException;
+use JsonMachine\Items;
 use Exception;
 
 class NgBuildService
@@ -28,17 +29,13 @@ class NgBuildService
         $path = config('angular.output') . '/stats.json';
 
         try {
-            $json = json_decode(file_get_contents($path), true);
-
-            if (isset($json['assets']) && count($json['assets'])) {
-                foreach ($json['assets'] as $asset) {
-                    $name = $asset['name'];
-
-                    if ($asset['chunkNames'] && count($asset['chunkNames'])) {
-                        $this->assets[$asset['chunkNames'][0]] = $name;
-                    } else {
-                        $this->assets[$name] = $name;
-                    }
+            $assets = Items::fromFile($path, ['pointer' => '/assets']);
+            foreach ($assets as $key => $asset) {
+                $name = $asset->name;
+                if ($asset->chunkNames && count($asset->chunkNames)) {
+                    $this->assets[$asset->chunkNames[0]] = $name;
+                } else {
+                    $this->assets[$name] = $name;
                 }
             }
         } catch (Exception $e) {
