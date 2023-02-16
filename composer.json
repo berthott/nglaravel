@@ -23,8 +23,8 @@
     }
   },
   "require-dev": {
-    "orchestra/testbench": "^7.0",
-    "phpunit/phpunit": "^9.5"
+    "orchestra/testbench": "^8.0",
+    "phpunit/phpunit": "^10.0"
   },
   "require": {
     "halaxa/json-machine": "^1.1"

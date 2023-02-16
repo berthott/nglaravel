@@ -66,8 +66,8 @@ $ php artisan vendor:publish --provider="berthott\NgLaravel\NgBuildServiceProvid
 
 ## Compatibility
 
-Tested with Laravel 8.x and Angular 12.
+Tested with Laravel 10.x and Angular 13.
 
 ## License
 
-See [License File](license.md). Copyright © 2021 Jan Bladt.
+See [License File](license.md). Copyright © 2023 Jan Bladt.
