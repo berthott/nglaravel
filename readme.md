@@ -1,13 +1,15 @@
-# NgLaravel - A helper for Angular + Laravel projects
+# NgLaravel
+
+A helper for Angular + Laravel projects.
 
 Easily use Laravel as your API backend and Angular with its CLI as frontend.
-Inspried by [fristys' Blogpost](https://fristys.me/blog/using-angular-cli-with-laravel/).
+Inspired by [fristys' Blogpost](https://fristys.me/blog/using-angular-cli-with-laravel/).
 
 ## Installation
 
 You should set up your [Laravel project](https://laravel.com/docs/8.x/installation#installation-via-composer) first.
 Then require the package.
-```
+```sh
 $ composer require berthott/nglaravel
 ```
 
@@ -16,7 +18,7 @@ $ composer require berthott/nglaravel
 Choose a folder within or outside of your Laravel project to install your Angular project to. I recommend using the [Angular CLI](https://angular.io/cli/new) inside `resources/angular`.
 
 In `angular.json` do the following changes:
-```
+```json
 "architect": {
   "build": {
     // ...
@@ -39,34 +41,35 @@ In `angular.json` do the following changes:
 }
 ```
 In the `package.json` of the angular project do the following changes:
-```
+```json
 "start": "ng build --configuration development --prod=false",
 "build": "ng build",
 ```
 
+By default default the package will look for Angulars output in `public/assets/angular`. If you choose to change the output path in `angular.json` please set the `output` property in `config/angular.php` or the `NG_OUTPUT_PATH` in `.env` accordingly.
+
 ## How it works
 
-The package will set up a generic web route that will catch anything apart from routes specified in the `except_routes` config, and forward it to a view including Angulars output scripts. In development these are the static files, in production a controller will read stats.json to include the correctly hashed files.
+The package will set up a generic web route that will catch anything apart from routes specified in the `except_routes` config, and forward it to a view including Angulars output scripts. In development these are the static files, in production a controller will read `stats.json` to include the correctly hashed files.
 
 ## Options
 
 To change the default options use
-```
+```sh
 $ php artisan vendor:publish --provider="berthott\NgLaravel\NgBuildServiceProvider" --tag="config"
 ```
-By default default the package will look for Angulars output in `public/assets/angular`. If you choose to change the output path in `angular.json` please set the `output` property in `config/angular.php` or the `NG_OUTPUT_PATH` in `.env` accordingly.
-
-To add a middleware to the web route use the `middleware` property in `angular.json`.
-To except routes from being forwarded to angular add them to the `except_routes` array. By default all /api prefixed routes will be excepted.
+* `output`: Determines Angulars path inside the public folder. Defaults to `env('NG_OUTPUT_PATH', 'assets/angular')`.
+* `except_routes`: Determines the beginning of routes that should not be forwarded to angular. Defaults to `['api']`.
+* `middleware`: Configurations for the route. Defaults to `['web']`.
 
 To change the default view use
-```
+```sh
 $ php artisan vendor:publish --provider="berthott\NgLaravel\NgBuildServiceProvider" --tag="views"
 ```
 
 ## Compatibility
 
-Tested with Laravel 10.x and Angular 13.
+Tested with Laravel 10.x and Angular 16.
 
 ## License
 

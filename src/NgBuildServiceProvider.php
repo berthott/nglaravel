@@ -26,11 +26,6 @@ class NgBuildServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // bind service
-        /* $this->app->bind('berthott\NgLaravel\NgBuildService', function () {
-            return new NgBuildService();
-        }); */
-
         // publish config
         $this->publishes([
             __DIR__.'/../config/config.php' => config_path('angular.php'),
@@ -48,6 +43,9 @@ class NgBuildServiceProvider extends ServiceProvider
         ], 'views');
     }
 
+    /**
+     * Set up the route.
+     */
     protected function setUpRoute()
     {
         $exceptedRoutes = [];

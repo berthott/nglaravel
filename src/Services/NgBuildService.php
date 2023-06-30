@@ -6,10 +6,17 @@ use berthott\NgLaravel\Exceptions\NgBuildServiceException;
 use JsonMachine\Items;
 use Exception;
 
+/**
+ * Service to handle angular assets.
+ */
 class NgBuildService
 {
-    // We'll cache our assets hash here, so we don't have to
-    // constantly extract the values from stats.json
+    /**
+     * The cached assets.
+     * 
+     * We'll cache our assets hash here, so we don't have to
+     * constantly extract the values from stats.json
+     */
     private $assets = [];
 
     public function __construct()
@@ -18,12 +25,16 @@ class NgBuildService
     }
 
     /**
-    * Extracts all bundle assets from public/build/stats.json
-    * in the format: 
-    * {
-    *  "assetFileName": "assetHasheFileName"
-    * }
-    */
+     * Extract and cache the assets.
+     * 
+     * Extracts all bundle assets from public/build/stats.json
+     * in the format: 
+     * ```json
+     * {
+     *  "assetFileName": "assetHasheFileName"
+     * }
+     * ```
+     */
     private function extractAndCache()
     {
         $path = config('angular.output') . '/stats.json';
@@ -39,12 +50,15 @@ class NgBuildService
                 }
             }
         } catch (Exception $e) {
+            // only catch the error
         }
     }
 
     /**
-    * Get the cached assets and throw an error when empty
-    */
+     * Get the cached assets and throw an error when empty
+     * 
+     * @throws \berthott\NgLaravel\Exceptions\NgBuildServiceException
+     */
     public function assets()
     {
         if (empty($this->assets) && !file_exists(config('angular.output') . '/main.js')) {

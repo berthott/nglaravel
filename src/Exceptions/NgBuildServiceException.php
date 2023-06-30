@@ -3,7 +3,6 @@
 namespace berthott\NgLaravel\Exceptions;
 
 use Exception;
-use Illuminate\Support\Facades\Log;
 
 class NgBuildServiceException extends Exception
 {
