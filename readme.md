@@ -1,3 +1,5 @@
+![test workflow](https://github.com/berthott/nglaravel/actions/workflows/test.yml/badge.svg)
+
 # NgLaravel
 
 A helper for Angular + Laravel projects.
